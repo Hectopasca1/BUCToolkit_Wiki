@@ -23,7 +23,7 @@ A Python-based package containing various tools for machine learning applied in 
 ### Used:
 - **NumPy** (BSD-3-Clause License), Copyright © 2005-2025 NumPy Developers.
 - **Joblib** (BSD-3-Clause License), Copyright © 2008-2021, The joblib developers.
-- **PyTorch** (BSD-3-Clause License), Copyright © 2016-present Facebook Inc.  
+- **PyTorch** (BSD-3-Clause License), Copyright © 2016-present Facebook Inc. 
 
 ### Optional:
 - **[ASE](https://gitlab.com/ase/ase/-/tree/master?ref_type=heads)** (LGPL-v2.1 License)
