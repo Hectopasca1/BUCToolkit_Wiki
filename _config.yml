@@ -151,7 +151,7 @@ pwa:
 paginate: 10
 
 # The base URL of your site
-baseurl: "/BUCToolkit_Wiki/"
+baseurl: "/BUCToolkit_Wiki/blob/"
 
 # ------------ The following options are not recommended to be modified ------------------
 
