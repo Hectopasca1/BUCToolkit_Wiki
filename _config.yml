@@ -77,8 +77,8 @@ analytics:
 # Page views settings
 pageviews:
   provider: goatcounter # now only supports 'goatcounter'
-    goatcounter:
-      id: buctoolkitwiki
+  goatcounter:
+    id: buctoolkitwiki
 
 # Prefer color scheme setting.
 #
