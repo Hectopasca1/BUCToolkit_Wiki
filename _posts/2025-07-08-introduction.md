@@ -211,10 +211,10 @@ runner.run(model)
 #### using low-level functions
 
 While for low-level methods, they are more like general algorithms for optimization, 
-saddle point search, newton dynamics evolution and Monte Carlo samplings. 
+saddle point search, Newton dynamics evolution and Monte Carlo samplings. 
 Hence, all arguments (such as the function, gradient function, 
 target variables and other variables) should be set manually.
-A typical low-level function of molecular is like:
+A typical low-level function of molecular dynamics is like:
 ```python
 import BUCToolkit as bt
 
@@ -484,7 +484,7 @@ and reading. Its specific format is shown in the class `ArrayDumper` of `BUCTool
 To control the binary file output, args of `SAVE_PREDICTIONS: true` with a `PREDICTIONS_SAVE_FILE` should
 be set in the input file. For low-level functions, `output_file` is the related argument.
 
-For the binary output file from structure optimization, molecular dynamics, and Monte Carlo simulations, 
+For the binary output files from structure optimization, molecular dynamics, and Monte Carlo simulations, 
 one can load & convert them in the shell as follows:
 ```shell
 buctoolkit -c `$input_type` `$input_path` `$output_type` `$output_path`
