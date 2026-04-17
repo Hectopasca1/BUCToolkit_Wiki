@@ -12,10 +12,10 @@ pin: true
 ![logo](https://github.com/Hectopasca1/BUCToolkit_Wiki/blob/main/assets/logo.jpg "BUCToolkit_logo")
 
 # [BUCToolkit](https://github.com/TrinitroCat/BUCToolkit)
-## Batch-Upscaled Catalysis Toolkit(BUCToolkit)
+## Batch-Upscaled Catalysis Toolkit (BUCToolkit)
 BUCToolkit is an AI4Science software package of computational chemistry, which can apply PyTorch-based deep-learning models (of molecular or crystal potentials) to model training, predictions, batched structural optimizations, batched molecular dynamics tasks with/without constraints, and batched Monte Carlo simulations. Various tools for handling catalyst structure files are also included.
 
-**Wiki webpages(*[Tutorials](https://hectopasca1.github.io/BUCToolkit_Wiki/categories/tutorials/)*) are now under construction using Chirpy theme by [Cotes Chung](https://github.com/cotes2020/) to whom our sincere gratitude is given. Current manuals can be found in *[Manual](https://github.com/TrinitroCat/BUCToolkit/tree/main/Manual "Examples and templates")*.**
+**The Wiki webpages(*[Tutorials](https://hectopasca1.github.io/BUCToolkit_Wiki/categories/tutorials/)*) are now under construction using Chirpy theme by [Cotes Chung](https://github.com/cotes2020/) to whom our sincere gratitude is given. Current manuals can be found in *[Manual](https://github.com/TrinitroCat/BUCToolkit/tree/main/Manual "Examples and templates")*.**
 
 **Please note that the project is still in its early version and may change significantly in the future.**
 
@@ -25,11 +25,11 @@ BUCToolkit is an AI4Science software package of computational chemistry, which c
 ## Installation
 ### Requirements
 #### Third-party Libraries Used:
-- **NumPy** (BSD-3-Clause License), Copyright © 2005-2025 NumPy Developers.
 - **Joblib** (BSD-3-Clause License), Copyright © 2008-2021, The joblib developers.
+- **NumPy** (BSD-3-Clause License), Copyright © 2005-2025 NumPy Developers.
 - **PyTorch** (BSD-3-Clause License), Copyright © 2016-present Facebook Inc.
 
-#### Optional third-party libraries:
+#### Optional Third-party Libraries:
 - **DGL** (Apache-2.3 License). Only parts of DGL models are currently supported.
 - **torch-geometric** (MIT License). The basic `Data` and `Batch` object have been built-in.
 For its other advanced functions, the whole torch-geometric can be installed.
@@ -39,19 +39,19 @@ Otherwise, the Python built-in `input(...)` will be used.
 
 See [LICENSES](https://github.com/TrinitroCat/BUCToolkit/tree/main/LICENSES) for full license texts.
 
-### pip installation
+### pip Installation
 This is a recommended way to install BUCToolkit:
 ```shell
 pip install --upgrade pip
 pip install BUCToolkit
 ```
-### Installation from the source codes
+### Installation from the Source Codes
 ```shell
 git clone https://github.com/TrinitroCat/BUCToolkit.git
 pip install ./BUCToolkit
 ```
 ## Usage
-### Project Structures
+### Project Structure
 ```shell
 BUCToolkit
 |-- __init__.py
@@ -208,9 +208,9 @@ runner.set_dataloader(dataloader)
 runner.run(model)
 ```
 
-#### Using low-level functions
+#### Using Low-level Functions
 
-While for low-level methods, they are more like general algorithms for optimization, 
+As for low-level methods, they are more like general algorithms for optimization, 
 saddle point search, Newton dynamics evolution and Monte Carlo samplings. 
 Hence, all arguments (such as the function, gradient function, 
 target variables and other variables) should be set manually.
@@ -302,7 +302,7 @@ and existing input file can also be interactively inquired and modified
 in the sub-cli of the `edit` option.
 
 ### Input File Template
-The input file should be a YAML format file.
+The input file should be in YAML format.
 
 Here is a completed input file template that contains all supported tasks.
 The variables starts with "###" are the additions only required by 
@@ -469,7 +469,7 @@ MODEL_CONFIG:   # model hyperparameters used for `MODEL_NAME.__init__(**MODEL_CO
 ### Post-processing
 There are two outputs of BUCToolkit tasks, text log file and binary database file.
 
-#### Log files
+#### Log Files
 For API or executables, the output of log file is set by `REDIRECT: true` with `OUTPUT_PATH` and `OUTPUT_POSTFIX`, and the contents are controlled by `VERBOSE` in the input file. If `REDIRECT` is `false`, outputs will be printed to `sys.stdout`.
 
 Low-level functions are controlled by the logger system. For details, see `BUCToolkit/utils/setup_loggers.py`.
@@ -477,7 +477,7 @@ Low-level functions are controlled by the logger system. For details, see `BUCTo
 Because of the large costs of string processing, high-level verbosity is NOT recommended. All information 
 is included in the binary database file, so turning off the logger (by setting verbose = 0) is completely feasible.
 
-#### Binary database
+#### Binary Database
 This is a specially designed binary format to efficiently dump arrays. Memory-mapping is supported for both writing
 and reading. Its specific format is shown in the class `ArrayDumper` of `BUCToolkit/BatchStructure/StructureIO.py`.
 
@@ -524,7 +524,7 @@ data = CreatePygData().feat2data_list(bs3)
 graph = CreateDglData().feat2graph_list(bs3)
 
 ```
-wherein, the args of `indices` specify the selected part to read and write, instead of all files.
+Wherein, the args of `indices` specify the selected part to read and write, instead of all files.
 
 ## Contact us
 
