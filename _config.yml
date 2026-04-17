@@ -26,20 +26,18 @@ description: >- # used by seo meta and the atom feed
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
 url: "https://Hectopasca1.github.io"
 
-github1:
+github:
   username: TrinitroCat
-
-github2:
-  username: S-Xin1024 
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: Pengxin Pu & Xin Song et al.
-  github: "https://github.com/TrinitroCat"
-  
-  email: "ppx@buctoolkit.freeqiye.com"
-  email: "2024430081@buct.edu.cn"
+
+  email:
+    - "ppx@buctoolkit.freeqiye.com"
+    - "2024430081@buct.edu.cn"
+
   links:
     # The first element serves as the copyright owner's link
     #- https://twitter.com/username # change to your Twitter homepage
