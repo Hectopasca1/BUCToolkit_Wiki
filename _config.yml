@@ -35,10 +35,11 @@ github2:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Pengxin Pu & Xin Song
+  name: Pengxin Pu & Xin Song et al.
+  github: "https://github.com/TrinitroCat"
   
-  email: 2023200999@buct.edu.cn
-  email: 2024430081@buct.edu.cn
+  email: "ppx@buctoolkit.freeqiye.com"
+  email: "2024430081@buct.edu.cn"
   links:
     # The first element serves as the copyright owner's link
     #- https://twitter.com/username # change to your Twitter homepage
