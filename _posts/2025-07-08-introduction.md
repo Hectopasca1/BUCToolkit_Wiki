@@ -9,7 +9,7 @@ tags: [getting started]
 pin: true
 ---
 
-![logo](https://github.com/Hectopasca1/BUCToolkit_Wiki/blob/main/assets/logo.png "BUCToolkit_logo")
+![logo](https://github.com/Hectopasca1/BUCToolkit_Wiki/blob/main/assets/logo.jpg "BUCToolkit_logo")
 
 # [BUCToolkit](https://github.com/TrinitroCat/BUCToolkit)
 ## Batch-Upscaled Catalysis Toolkit(BUCToolkit)
@@ -88,7 +88,7 @@ In BUCToolkit, the advanced APIs which can be called to execute end-to-end tasks
 are in the path `api/`, and the classes/functions in the directories of `Batch*/` 
 are low-level methods.
 
-#### using APIs
+#### Using APIs
 
 The APIs can directly handle the structures of catalytic systems by converting
 them from text files such as `POSCAR` `OUTCAR` `ExtXyz` and `cif` to a torch-geometric Data
@@ -96,7 +96,7 @@ format, and output text log files and binary database format files after running
 Users only need to import their own torch model class and prepare an input file 
 (see [Input File Template](#input-file-template)).
 
-An example of using the api functions is shown as follows:
+An example of using the API functions is shown as follows:
 ```python
 """
 The example of model training & structure optimizations & molecular dynamics
@@ -208,7 +208,7 @@ runner.set_dataloader(dataloader)
 runner.run(model)
 ```
 
-#### using low-level functions
+#### Using low-level functions
 
 While for low-level methods, they are more like general algorithms for optimization, 
 saddle point search, Newton dynamics evolution and Monte Carlo samplings. 
