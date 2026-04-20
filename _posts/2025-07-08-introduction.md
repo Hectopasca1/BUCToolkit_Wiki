@@ -305,8 +305,8 @@ in the sub-cli of the `edit` option.
 The input file should be in YAML format.
 
 Here is a completed input file template that contains all supported tasks.
-The variables starts with "###" are the additions only required by 
-using BUCToolkit as an executable program, and those that starts with "#" are normal comments.
+The variables start with "###" are the additions only required by 
+using BUCToolkit as an executable program, and those that start with "#" are normal comments.
 ```yaml
 
 # input template
