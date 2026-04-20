@@ -33,7 +33,7 @@ BUCToolkit is an AI4Science software package of computational chemistry, which c
 - **DGL** (Apache-2.3 License). Only parts of DGL models are currently supported.
 - **torch-geometric** (MIT License). The basic `Data` and `Batch` object have been built-in.
 For its other advanced functions, the whole torch-geometric can be installed.
-- **ASE** (LGPL-v2.1 License) [ASE](https://gitlab.com/ase/ase/-/tree/master?ref_type=heads). Some limited functions of `ase.Atoms` object, such as are provided.
+- **[ASE (LGPL-v2.1 License)](https://gitlab.com/ase/ase/-/tree/master?ref_type=heads)**. Some limited functions of `ase.Atoms` object, such as are provided.
 - **prompt-toolkit** (BSD-3-Clause License). For a better experience of CLI.
 Otherwise, the Python built-in `input(...)` will be used.
 
