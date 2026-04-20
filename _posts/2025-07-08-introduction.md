@@ -494,7 +494,7 @@ buctoolkit -c `$input_type` `$input_path` `$output_type` `$output_path`
 This command will convert all files in `$input_path` with assumed format of `$input_type` into 
 `$output_path` in the format of `$output_type`.
 
-For a finer control, following python script can be used:
+For a finer control, the following python script can be used:
 ```python
 import BUCToolkit as bt
 from BUCToolkit.io import read_opt_structures, read_md_traj, read_mc_traj
