@@ -299,7 +299,7 @@ run       : Launch a task in the cli.
 ```
 Some prepared input file template can be called by the `task` option, 
 and existing input file can also be interactively inquired and modified 
-in the sub-cli of the `edit` option.
+in the sub-CLI of the `edit` option.
 
 ### Input File Template
 The input file should be in YAML format.
@@ -524,7 +524,7 @@ data = CreatePygData().feat2data_list(bs3)
 graph = CreateDglData().feat2graph_list(bs3)
 
 ```
-Wherein, the args of `indices` specify the selected part to read and write, instead of all files.
+Wherein, the args of `indices` specify the selected parts to read and write, instead of all files.
 
 ## Contact us
 
