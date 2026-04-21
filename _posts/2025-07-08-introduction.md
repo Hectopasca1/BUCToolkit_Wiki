@@ -13,7 +13,19 @@ pin: true
 
 # [BUCToolkit](https://github.com/TrinitroCat/BUCToolkit)
 ## Batch-Upscaled Catalysis Toolkit (BUCToolkit)
-BUCToolkit is an AI4Science software package of computational chemistry, which can apply PyTorch-based deep-learning models (of molecular or crystal potentials) to model training, predictions, batched structural optimizations, batched molecular dynamics tasks with/without constraints, and batched Monte Carlo simulations. Various tools for handling catalyst structure files are also included.
+BUCToolkit is a PyTorch-based high-performance AI4Science software package of computational chemistry, 
+which is capable of performing ***structural optimizations*** (both minimization and transition state search), 
+***molecular dynamics*** with/without constraints, and ***Monte Carlo simulations*** by 
+using any python function with an interface of `func(X, *args, **kwargs)` and `grad_func(X, *args, **kwargs)`
+that return energy and energy gradient respectively (i.e., the negative forces).
+The most typical input functions are PyTorch-based **deep-learning models** (of molecular or crystal potentials).
+For them, BUCToolkit provides training and prediction APIs as well.
+
+All the functions above support **multi-structure batch parallelism** for both **regular batches** 
+(structures sharing the same atom numbers) and **irregular batches** (structures with different atom numbers).
+These core functions are highly optimized by operator fusing, cudaGraphs replaying, 
+asynchronized dumping/logging by cuda-stream pipelines, and in-place memory calculations.
+(See section [Features](#features) for details).
 
 **The Wiki webpages(*[Tutorials](https://hectopasca1.github.io/BUCToolkit_Wiki/categories/tutorials/)*) are now under construction using Chirpy theme by [Cotes Chung](https://github.com/cotes2020/) to whom our sincere gratitude is given. Current manuals can be found in *[Manual](https://github.com/TrinitroCat/BUCToolkit/tree/main/Manual "Examples and templates")*.**
 
@@ -526,9 +538,71 @@ graph = CreateDglData().feat2graph_list(bs3)
 ```
 Wherein, the args of `indices` specify the selected parts to read and write, instead of all files.
 
+## Features
+
+BUCToolkit employs highly optimized PyTorch code including fused operators, cudaGraphs replaying, 
+asynchronized dumping/logging by cuda-stream pipelines, and in-place memory calculations.
+
+### Flexible Function Interfaces
+Major low-level functions use very flexible interfaces as follows 
+(see also [Using Low-level Functions](#using-low-level-functions)):
+```
+function(
+    func=func,
+    X=X,
+    grad_func=grad_func,
+    func_args=[],
+    func_kwargs=None,
+    grad_func_args=[],
+    grad_func_kwargs=None,
+    is_grad_func_contain_y=False,
+    require_grad=False,
+    ...
+)
+```
+where the `X` is the target variable to update (e.g., the atom positions in molecular dynamics 
+and structural optimizations), `func_args` and `func_kwargs` are other necessary arguments and 
+keyword arguments for the `func`. Hence, any `func`, as long as able to be wrapped as
+`func(X, *args, **kwargs)`, is valid. For example, one may write a function that submits ab initio 
+computations (e.g., VASP, Gaussian) and convert the results (energy and forces) into torch.Tensor format, 
+and BUCToolkit functions will be executed with these inputs normally.
+
+The `grad_func` has a similar design. 
+The argument `is_grad_func_contain_y` controls two ways to calculate the gradient of `func`. 
+`is_grad_func_contain_y = True` is to use auto-gradient format, which actually uses 
+`grad_func(X, y, *grad_func_args, **grad_func_kwargs)` internally 
+(Note: users would not manually put `y` into `grad_func_args`). Otherwise, interfaces of 
+`grad_func(X, *grad_func_args, **grad_func_kwargs)` will be used. At last, `require_grad` controls the
+gradient context of PyTorch. When `require_grad = False`, computation of `func` and `grad_func` is under
+the context of `torch.no_grad` to reduce memory cost. Otherwise, gradient will be turned on explicitly
+by `torch.enable_grad`.
+
+### Highly Customizable Algorithms
+All methods/algorithms are object-oriented modularized. They have `_Base*` abstract base classes 
+that implement highly optimized main loop routines, and are specialized by modifying several methods like 
+`self.initialize*(...)` and `self._update*(...)` in subclasses. Hence, one can develop and implement any 
+custom new algorithm by simply overriding these update methods without modifying the main loop process.
+
+### Batch Parallelism Scheme
+Most functions, such as structural optimization, transition state search, molecular dynamics and 
+Monte Carlo simulation, support the parallel computing of **both regular batched samples 
+(stacked samples with the same atom numbers) and irregular batched samples 
+(concatenated samples with different atom numbers)**. 
+Input Tensors (of atom coordinates, forces, fixation masks, etc.) should be 3-dimensional. For regular batches,
+their shapes are **(batch_size, n_atom, n_dim)**, where `n_dim` is usually 3. For irregular batches, their 
+shapes are **(1, $\sum_{i}$n_atom$_{i}$, n_dim)**, where $i$ is the sample index, and users should provide 
+another variable `batch_indices` that records atom numbers of each sample. For example, 
+`batch_indices = [64, 56, 72, 83, 102]` means that the samples have 64, 56, 72, 83, 102 atoms, respectively, and 
+corresponding shapes of atom coordinates should be `(1, 377, 3)`.
+
+For structural optimization and transition state search, BUCToolkit applies a **dynamic samples approach**
+which dynamically removes the converged samples in one batch before starting the next iteration step 
+by maintaining a convergence mask and applying `indexed_select`/`indexed_copy_` functions. It could significantly reduce
+the waste of repeatedly calculating the converged data.
+
 ## Contact us
 
-If you have any questions, please contact us at **ppx@buctoolkit.freeqiye.com**
+If you have any questions, please contact us at **buctoolkit@163.com**
 
 For bug reports or feature requests, please use [GitHub Issues](https://github.com/TrinitroCat/BUCToolkit/issues).
 
