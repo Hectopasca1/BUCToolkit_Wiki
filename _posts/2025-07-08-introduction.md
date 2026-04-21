@@ -594,8 +594,10 @@ Monte Carlo simulation, support the parallel computing of **both regular batched
 Input Tensors (of atom coordinates, forces, fixation masks, etc.) should be 3-dimensional. For regular batches,
 their shapes are `(batch_size, n_atom, n_dim)`, where `n_dim` is usually 3. For irregular batches, their 
 shapes are 
-$$(1, \sum_{i} n_{\text{atom}_i}, n_{\text{dim}})$$
-, where $i$ is the sample index, and users should provide 
+$$
+(1, \sum_{i} n_{\text{atom}_i}, n_{\text{dim}})
+$$
+, where *i* is the sample index, and users should provide 
 another variable `batch_indices` that records atom numbers of each sample. For example, 
 `batch_indices = [64, 56, 72, 83, 102]` means that the samples have 64, 56, 72, 83, 102 atoms, respectively, and 
 corresponding shapes of atom coordinates should be `(1, 377, 3)`.
