@@ -6,9 +6,7 @@ The [wiki webpage](https://hectopasca1.github.io/BUCToolkit_Wiki/) for project [
 
 Copy "https://hectopasca1.github.io/BUCToolkit_Wiki/" if the hyperlink fails.
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 Most functions, such as structural optimization, transition state search, molecular dynamics and 
 Monte Carlo simulation, support the parallel computing of **both regular batched samples 
 (stacked samples with the same atom numbers) and irregular batched samples 
