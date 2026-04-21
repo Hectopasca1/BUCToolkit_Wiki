@@ -20,6 +20,7 @@ shapes are
 $$
 (1, \sum_{i} n_{\text{atom}_i}, n_{\text{dim}})
 $$
+
 , where `i` is the sample index, and users should provide 
 another variable `batch_indices` that records atom numbers of each sample. For example, 
 `batch_indices = [64, 56, 72, 83, 102]` means that the samples have 64, 56, 72, 83, 102 atoms, respectively, and 
