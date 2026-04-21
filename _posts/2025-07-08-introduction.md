@@ -16,7 +16,7 @@ pin: true
 BUCToolkit is a PyTorch-based high-performance AI4Science software package of computational chemistry, 
 which is capable of performing ***structural optimizations*** (both minimization and transition state search), 
 ***molecular dynamics*** with/without constraints, and ***Monte Carlo simulations*** by 
-using any python function with an interface of `func(X, *args, **kwargs)` and `grad_func(X, *args, **kwargs)`
+using any Python function with an interface of `func(X, *args, **kwargs)` and `grad_func(X, *args, **kwargs)`
 that return energy and energy gradient respectively (i.e., the negative forces).
 The most typical input functions are PyTorch-based **deep-learning models** (of molecular or crystal potentials).
 For them, BUCToolkit provides training and prediction APIs as well.
@@ -506,7 +506,7 @@ buctoolkit -c `$input_type` `$input_path` `$output_type` `$output_path`
 This command will convert all files in `$input_path` with assumed format of `$input_type` into 
 `$output_path` in the format of `$output_type`.
 
-For a finer control, the following python script can be used:
+For a finer control, the following Python script can be used:
 ```python
 import BUCToolkit as bt
 from BUCToolkit.io import read_opt_structures, read_md_traj, read_mc_traj
