@@ -25,7 +25,7 @@ All the functions above support **multi-structure batch parallelism** for both *
 (structures sharing the same atom numbers) and **irregular batches** (structures with different atom numbers).
 These core functions are highly optimized by operator fusing, cudaGraphs replaying, 
 asynchronized dumping/logging by cuda-stream pipelines, and in-place memory calculations.
-(See section [Features](#features) for details).
+(See section *[Features](#features)* for details).
 
 **The Wiki webpages(*[Tutorials](https://hectopasca1.github.io/BUCToolkit_Wiki/categories/tutorials/)*) are now under construction using Chirpy theme by [Cotes Chung](https://github.com/cotes2020/) to whom our sincere gratitude is given. Current manuals can be found in *[Manual](https://github.com/TrinitroCat/BUCToolkit/tree/main/Manual "Examples and templates")*.**
 
